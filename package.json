@@ -1,0 +1,51 @@
+{
+  	"devDependencies": {
+    	"@symfony/webpack-encore": "^0.22.4",
+    	"babel-eslint": "^8.2.6",
+    	"node-sass": "^4.11.0",
+	    "sass-loader": "^7.1.0",
+	    "ts-loader": "^5.3.3",
+	    "tslint": "^5.15.0",
+	    "tslint-loader": "^3.5.4",
+	    "typescript": "^3.3.3333",
+	    "webpack-notifier": "^1.6.0"
+  	},
+  	"license": "UNLICENSED",
+  	"private": true,
+  	"scripts": {
+	    "dev-server": "encore dev-server",
+	    "dev": "encore dev",
+	    "watch": "encore dev --watch",
+	    "build": "encore production --progress"
+  	},
+  	"dependencies": {
+	    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+	    "@babel/polyfill": "^7.2.5",
+	    "@fullcalendar/bootstrap": "^4.0.1",
+	    "@fullcalendar/core": "^4.0.2",
+	    "@fullcalendar/daygrid": "^4.0.1",
+	    "@fullcalendar/list": "^4.0.1",
+	    "@fullcalendar/timegrid": "^4.0.1",
+	    "@types/bootstrap": "^4.3.0",
+	    "@types/bootstrap-datepicker": "0.0.13",
+	    "@types/bootstrap-select": "^1.11.1",
+	    "@types/graphviz": "0.0.30",
+	    "@types/jquery": "^3.3.29",
+	    "@types/node": "^11.13.10",
+	    "@types/select2": "^4.0.48",
+	    "bootstrap": "^4.3.1",
+	    "bootstrap-datepicker": "^1.9.0",
+	    "bootstrap-select": "^1.13.9",
+	    "child_process": "^1.0.2",
+	    "flag-icon-css": "^3.3.0",
+	    "fs": "0.0.1-security",
+	    "graphviz": "0.0.9",
+	    "jquery": "^3.3.1",
+	    "js-snakecase": "^1.2.0",
+	    "popper.js": "^1.14.7",
+	    "select2": "^4.0.6-rc.1",
+	    "select2-bootstrap-theme": "0.1.0-beta.10",
+	    "tooltip-js": "^3.0.0",
+	    "webpack-icons-installer": "^2.0.0"
+  	}
+}
