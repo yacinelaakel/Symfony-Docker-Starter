@@ -1,0 +1,33 @@
+# To use this file on prod use the following command on your shell : 
+# docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+# And don't forget to create the traefik network on the prod server if it's not done yet:
+# docker network create ntw_traefik
+version: '3'
+services:
+    apache:
+        networks:
+            - ntw_traefik
+            - internal
+        labels:
+            - "traefik.enable=true"
+            - "traefik.backend=symfony-app"
+            - "traefik.frontend.rule=Host:symfony-app.yacine.io"
+            - "traefik.docker.network=ntw_traefik"
+    mysql:
+        networks:
+            - internal
+    php:
+        networks:
+            - internal
+    phpmyadmin:
+        networks:
+            - internal
+    maildev:
+        networks:
+            - internal
+
+networks:
+    internal:
+        external: false
+    ntw_traefik:
+        external: true

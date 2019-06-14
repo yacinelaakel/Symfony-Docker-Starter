@@ -6,11 +6,13 @@
 # Ports
 Les ports utilisés sont :
 - le port externe 8000 pour Apache ;
-- le port externe 8080 pour PhpMyAdmin.
-- le port externe 8001 pour Maildev.
+- le port externe 8080 pour PhpMyAdmin. ;
+- le port externe 8001 pour Maildev. ;
 - le port interne 9000 pour PHP ;
 - le port interne 3306 pour la base de données ;
+
 Rappel : port externe = port accessible depuis l'hôte (par exemple depuis votre navigateur), port interne = port accessible uniquement par les conteneurs d'un même docker-compose. 
+
 Assurez-vous d'avoir les ports **externe** de libres avant de lancer Docker !
 
 # Étapes d'installation
@@ -56,7 +58,8 @@ $ sudo bash go.sh
 $ docker exec -t -i sf4_php bash
 ```
 9. Vérifiez que vous vous trouvez bien dans le dossier `/home/wwwroot/sf4#`. C'est via cette interface que toutes les commandes en ligne doivent passer (Symfony, Composer, NPM...) **mais pas GIT** _(les commandes GIT doivent être passées directement via votre OS hors du conteneur)_.
-8. Mettez à jour les dépendances :
+
+10. Mettez à jour les dépendances :
   - Composer :
 ```bash
 > php composer.phar install
@@ -67,15 +70,18 @@ $ composer install
 ```bash
 $ npm install
 ```
-9. Générez les _assets_ WebPack Encore :
+11. Générez les _assets_ WebPack Encore :
 ```
 $ npm install @symfony/webpack-encore --save-dev
 ```
-10. Généréz le CSS et le JavaScript :
+12. Généréz le CSS et le JavaScript :
 ```bash
+# En dev
+$ npm run watch
+# En prod
 $ npm run build
 ```
-11. Chargement des données :
+13. Chargement des données :
   - chargez les migrations doctrine (évolutions de la structure de base) :
 ```bash
 $ php bin/console doctrine:migrations:migrate
@@ -91,4 +97,4 @@ $ php bin/console doctrine:fixtures:load # Le drapeau --append est facultatif.
                                          # classes des entités. Ce drapeau sera utile dès que vous créérez
                                          # vos propres fixtures.
 ```
-12. Connectez-vous à l'application http://localhost:8000
+14. Connectez-vous à l'application http://localhost:8000

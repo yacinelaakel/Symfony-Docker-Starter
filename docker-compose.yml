@@ -19,10 +19,10 @@ services:
         volumes:
             - .docker/data/db:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-            MYSQL_DATABASE: ${MYSQL_DATABASE}
-            MYSQL_USER: ${MYSQL_USER}
-            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: sf4
+            MYSQL_USER: sf4
+            MYSQL_PASSWORD: sf4
         command: "--default-authentication-plugin=mysql_native_password"
 
     php:
@@ -45,7 +45,7 @@ services:
             - "8080:80"
         environment:
             PMA_HOST: mysql
-            PMA_PORT: 3306
+            PMA_PORT: "3306"
         depends_on:
             - mysql
 
