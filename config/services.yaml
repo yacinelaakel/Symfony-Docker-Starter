@@ -5,6 +5,8 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'fr'
+    env(MERCURE_PUBLISH_URL): ''
+    env(MERCURE_JWT_SECRET): ''
   
 services:
     # default configuration for services in *this* file
@@ -31,3 +33,11 @@ services:
     # please note that last definitions always *replace* previous ones
     App\Command\PhpCsFixerCommand:
         class: App\Command\PhpCsFixerCommand
+
+    App\Mercure\CookieGenerator:
+        arguments:
+            $secret: '%env(MERCURE_JWT_KEY)%'
+
+    App\Mercure\JwtProvider:
+        arguments:
+            $secret: '%env(MERCURE_JWT_KEY)%'

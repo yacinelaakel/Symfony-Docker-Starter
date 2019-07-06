@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Account | User #{{ app.user.id }}{% endblock %}
+
+{% block body %}
+<h1>Account</h1>
+{{ dump(app.user) }}
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+    let title = document.title;
+    let notify = 0;
+    const url = new URL('{{ MERCURE_PUBLISH_URL }}');
+    url.searchParams.append('topic', 'http://monsite.com/ping');
+    const eventSource = new EventSource(url, { withCredentials: true });
+    eventSource.onmessage = e => {
+        console.log(e);
+        notify++;
+        document.title = title + ' (' + notify + ')';
+    };
+</script>
+{% endblock %}

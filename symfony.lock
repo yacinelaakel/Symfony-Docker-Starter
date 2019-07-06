@@ -107,6 +107,9 @@
     "knplabs/knp-paginator-bundle": {
         "version": "v2.8.0"
     },
+    "lcobucci/jwt": {
+        "version": "3.3.1"
+    },
     "monolog/monolog": {
         "version": "1.24.0"
     },
@@ -265,6 +268,21 @@
             "version": "1.0",
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
+    },
+    "symfony/mercure": {
+        "version": "v0.2.0"
+    },
+    "symfony/mercure-bundle": {
+        "version": "0.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "0.1",
+            "ref": "c78ab1f56e700004fc5cd675c26b3c1c26be281d"
+        },
+        "files": [
+            "config/packages/mercure.yaml"
+        ]
     },
     "symfony/monolog-bridge": {
         "version": "v4.2.9"

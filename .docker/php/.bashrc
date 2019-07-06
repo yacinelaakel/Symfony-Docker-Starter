@@ -1,4 +1,3 @@
-
 # Note: PS1 and umask are already set in /etc/profile. You should not
 # need this unless you want different defaults for root.
 # PS1='${debian_chroot:+($debian_chroot)}\h:\w\$ '
@@ -13,6 +12,7 @@ alias make:migration='php bin/console make:migration'
 alias migrations:migrate='php bin/console doctrine:migrations:migrate'
 alias schema:drop='time php bin/console doctrine:schema:drop -f'
 alias schema:update='time php bin/console doctrine:schema:update -f'
+alias load:fixtures=' php bin/console doctrine:fixtures:load'
 # Cache
 alias cache:clear='php bin/console cache:clear'
 alias cache:clear:prod='php bin/console cache:clear --env=prod'

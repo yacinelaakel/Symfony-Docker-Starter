@@ -54,3 +54,15 @@ services:
         container_name: sf4_maildev
         ports:
             - "8001:80"
+
+    mercure:
+        image: dunglas/mercure
+        container_name: sf4_mercure
+        ports:
+            - "3000:3000"
+        environment: 
+            - JWT_KEY=${MERCURE_JWT_KEY}
+            - ADDR=${MERCURE_SERVER_PORT}
+            - PUBLISH_ALLOWED_ORIGINS=*
+            - ALLOW_ANONYMOUS=1
+            - CORS_ALLOWED_ORIGINS=*

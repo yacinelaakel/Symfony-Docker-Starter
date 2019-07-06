@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
 import '../scss/app.scss'
 
-alert('hggg')
+declare const url: any
+

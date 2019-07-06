@@ -12,7 +12,6 @@ services:
             - "traefik.enable=true"
             - "traefik.backend=symfony-app"
             - "traefik.frontend.rule=Host:symfony-app.yacine.io"
-            - "traefik.docker.network=ntw_traefik"
     mysql:
         networks:
             - internal

@@ -2,3 +2,5 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+        MERCURE_PUBLISH_URL: '%env(MERCURE_PUBLISH_URL)%'
