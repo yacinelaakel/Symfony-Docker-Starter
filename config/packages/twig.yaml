@@ -3,4 +3,4 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     globals:
-        MERCURE_PUBLISH_URL: '%env(MERCURE_PUBLISH_URL)%'
+        MERCURE_EXTERNAL_URL: '%env(MERCURE_EXTERNAL_URL)%'

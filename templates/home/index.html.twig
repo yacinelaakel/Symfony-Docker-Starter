@@ -3,34 +3,13 @@
 {% block title %}Mercure{% endblock %}
 
 {% block body %}
-<h1>Dunglas/Mercure</h1>
 <div class="container">
     <a href="{{ path('account') }}" class="btn btn-success my-2">Account</a>
-
     <hr>
-
-    <form action="{{ path('ping') }}" method="post">
-        <button class="btn btn-primary my-2" type="submit">Ping Users</button>
-    </form>
-
     {% for user in users %}
 	    <form action="{{ path('ping', { user: user.id }) }}" method="post">
 	        <button class="btn btn-primary my-2" type="submit">Ping User #{{ user.id }}</button>
 	    </form>
     {% endfor %}
 </div>
-{% endblock %}
-
-{% block javascripts %}
-	<script>
-		const url = new URL('http://localhost:3000/hub');
-		url.searchParams.append('topic', 'http://localhost:3000/ping');
-
-		const es = new EventSource(url);
-
-		es.onmessage = e => {
-		    console.log(JSON.parse(e.data).status);
-		};
-	</script>
-	{{ parent() }}
 {% endblock %}

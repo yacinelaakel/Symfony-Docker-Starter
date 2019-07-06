@@ -11,6 +11,16 @@
         {% block body %}
         {% endblock %}
 		{% block javascripts %}
+			<script>
+				const url = new URL('{{ MERCURE_EXTERNAL_URL }}');
+				url.searchParams.append('topic', url + '/ping');
+
+				const es = new EventSource(url, {withCredentials: true});
+
+				es.onmessage = e => {
+				    console.log(JSON.parse(e.data));
+				};
+			</script>
 		    {{ encore_entry_script_tags('app') }}
 		{% endblock %}
     </body>

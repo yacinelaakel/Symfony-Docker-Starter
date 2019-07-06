@@ -23,27 +23,27 @@ class HomePageController extends AbstractController {
 
     /**
      * @Route("/", name="home")
+     *
+     * @param CookieGenerator $cookieGenerator
      */
-    public function home(Publisher $publisher) {
+    public function home(CookieGenerator $cookieGenerator) {
         $users = $this->getDoctrine()->getManager()->getRepository(User::class)->findAll();
-        return $this->render('home/index.html.twig', [
-            'users' => $users,
-        ]);
+        $response = $this->render('home/index.html.twig', ['users' => $users]);
+        $response->headers->set('set-cookie', $cookieGenerator->generate($this->getUser()));
+        return $response;
     }
 
     /**
      * @Route("/ping/{user}", name="ping", methods={"POST"})
      *
      * @param Publisher $publisher
-     * @param ?User     $user
+     * @param User      $user
      */
-    public function ping(Publisher $publisher, ?User $user = null) {
-        $topic = 'http://localhost:3000/ping';
+    public function ping(Publisher $publisher, User $user) {
+        $topic = $_ENV['MERCURE_EXTERNAL_URL'].'/ping';
         $data = json_encode([]);
-        if (!is_null($user)) {
-            $target = ['http://monsite.com/ping/user/'.$user->getId()];
-        }
-        $update = new Update($topic, $data, $target ?? []);
+        $target = [$_ENV['MERCURE_EXTERNAL_URL'].'/user/'.$user->getId()];
+        $update = new Update($topic, $data, $target);
         $publisher($update); // Sync
         return $this->redirectToRoute('home');
     }

@@ -33,12 +33,12 @@ class CookieGenerator {
         $token = (new Builder())
             ->set('mercure', [
                 'subscribe' => [
-                    'http://monsite.com/ping/user/'.$user->getId(),
+                    $_ENV['MERCURE_EXTERNAL_URL'].'/user/'.$user->getId(),
                 ],
             ])
             ->sign(new Sha384(), $this->secret)
             ->getToken()
             ->__toString();
-        return 'mercureAuthorization='.$token.'; Path=/hub; HttpOnly;';
+        return 'mercureAuthorization='.$token.'; Path=/; HttpOnly;';
     }
 }
