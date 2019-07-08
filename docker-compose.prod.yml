@@ -24,6 +24,9 @@ services:
     maildev:
         networks:
             - internal
+    mercure:
+        networks:
+            - internal
 
 networks:
     internal:

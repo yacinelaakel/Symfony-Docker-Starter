@@ -4,7 +4,7 @@ services:
         build: .docker/apache
         container_name: sf4_apache
         ports:
-            - "8000:80"
+            - "${APP_PORT}:80"
         volumes:
             - .docker/config/vhosts:/etc/apache2/sites-enabled
             - .:/home/wwwroot/sf4
@@ -53,16 +53,16 @@ services:
         image: djfarrelly/maildev
         container_name: sf4_maildev
         ports:
-            - "8001:80"
+            - "9001:80"
 
     mercure:
         image: dunglas/mercure
         container_name: sf4_mercure
         ports:
-            - "3000:3000"
+            - "${MERCURE_SERVER_PORT}:${MERCURE_SERVER_PORT}"
         environment: 
             - JWT_KEY=${MERCURE_JWT_KEY}
-            - ADDR=${MERCURE_SERVER_PORT}
-            - PUBLISH_ALLOWED_ORIGINS=http://localhost:3000
+            - ADDR=:${MERCURE_SERVER_PORT}
+            - PUBLISH_ALLOWED_ORIGINS=http://sf4_mercure:${MERCURE_SERVER_PORT}
             - ALLOW_ANONYMOUS=1
-            - CORS_ALLOWED_ORIGINS=http://localhost:8000
+            - CORS_ALLOWED_ORIGINS=${APP_URL},${APP_URL}:${APP_PORT}

@@ -15,9 +15,10 @@
 				const url = new URL('{{ MERCURE_EXTERNAL_URL }}');
 				url.searchParams.append('topic', url + '/ping');
 
-				const es = new EventSource(url, {withCredentials: true});
+				const es = new EventSource(url, { withCredentials: true });
 
 				es.onmessage = e => {
+					alert('ok');
 				    console.log(JSON.parse(e.data));
 				};
 			</script>

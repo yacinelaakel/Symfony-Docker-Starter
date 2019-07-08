@@ -43,7 +43,7 @@ class HomePageController extends AbstractController {
         $topic = $_ENV['MERCURE_EXTERNAL_URL'].'/ping';
         $data = json_encode([]);
         $target = [$_ENV['MERCURE_EXTERNAL_URL'].'/user/'.$user->getId()];
-        $update = new Update($topic, $data, $target);
+        $update = new Update($topic, $data, $target ?? []);
         $publisher($update); // Sync
         return $this->redirectToRoute('home');
     }
